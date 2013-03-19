@@ -4,5 +4,63 @@ body {
 }
 .option {
 	font-size: 18px;
+}
+#top {
+	/*margin:0px;*/
+	/*padding:10px 20px;*/
+	/*background-color:#993300;*/
+	height: 100px;
+	background: #f1f1f1;
+	border-bottom: 1px solid #e5e5e5;
+	overflow: hidden;
+	margin: -10px;
+	margin-left: -100px;
 
+}
+#left {
+	margin-left: -100px;
+}
+#space{
+	margin:20px;
+}
+#form {
+	float:right;
+	margin: 12px 0 0;
+	margin-right: 170px;
+	padding: 20px 25px 15px;
+	background: #D8DFE6;
+	border: 2px solid #e5e5e5;
+}
+
+.field {
+	padding: 10px 0px;
+}
+.field2 {
+	padding: 10px 10px;
+}
+#submit {
+	margin-top: 10px;
+	margin-left: -80px;
+	float: left;
+}
+#left {
+	margin-left: -80px;
+}
+#info {
+	float:left;
+	margin-left: 60px;	
+}
+.weirdcolor{
+	color: #003300;
+}
+#create {
+	margin-left: 0px;
+}
+#formcreate {
+	float:left;
+	margin: 12px 0 0;
+	margin-left: 70px;
+	padding: 20px 25px 15px;
+	background: #f1f1f1;
+	border: 1px solid #e5e5e5;
 }

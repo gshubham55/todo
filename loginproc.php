@@ -9,7 +9,7 @@
 	{
 
 		$_SESSION['username']=$_POST['username'];
-		header('Location:securedpage.php');
+		header('Location:todomain.php');
 	}
 	else 
 		{	

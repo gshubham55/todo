@@ -4,8 +4,10 @@
 	{
 		header('Location:index.php');
 	}
+	else
+		header('Location:todomain.php');
 ?>
-<html>
+<!-- <html>
 	<head>
 		<title>
 			Secured page
@@ -20,4 +22,4 @@
 		// mysql_close($link) ; 
 		?>
 	</body>
-</html>
+</html> -->

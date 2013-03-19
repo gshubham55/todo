@@ -1,3 +1,42 @@
 .linethr {
 	text-decoration: line-through;
 }
+#top {
+	/*margin:0px;*/
+	/*padding:10px 20px;*/
+	/*background-color:#993300;*/
+	height: 100px;
+	background: #f1f1f1;
+	border-bottom: 1px solid #e5e5e5;
+	overflow: hidden;
+	margin: -10px;
+	margin-left: -100px;
+}
+#moveup1 {
+	margin-top: -20px;
+	background-color: #192823;
+}
+#moveleft1 {
+	margin-left: 0px;
+}
+#floatleft1 {
+	float: left;
+}
+#formcontainer {
+	float: left;
+	margin-top: -40px;
+	padding:30px 20px 20px 20px;
+	background-color: #D0C6B1;
+	margin-left: 100px;
+}
+.hidden1 {
+	display: none;
+}
+#hidden2 {
+	display: none;
+}
+#undrlne:hover {
+	text-decoration: underline;
+	cursor: pointer;
+
+}

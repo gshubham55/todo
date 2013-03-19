@@ -38,9 +38,10 @@
 							 or die(mysql_error());  
 		 $_SESSION['username']=$_POST['username'];
 		 $sessioncur=$_SESSION['username'];
-		 echo "<p>You have created your account with username: $husername and enc password: $hpassword </p>";
-		 echo "<p> click <a href='securedpage.php'>here</a> to go to secured page or <a href='logout.php'>here</a> to log out";
+		 echo "<p>Welcome $hname </p>";
+		 echo "<p> click <a href='todomain.php'>here</a> to go to the app or <a href='logout.php'>here</a> to log out";
 		// unset($_SESSION['username']);
 		// session_destroy();
+		 header('Loaction:index.php');
 	}
 ?>
