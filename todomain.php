@@ -11,45 +11,15 @@
 <html>
 	<head>
 		<title>
-			What TO DO?
+			What TODO?
 		</title>
 		<link rel="stylesheet" href="style_todomain.css"/>
 		<!-- <link rel="stylesheet" type="text/css" href="style_login.css"/> -->
 		<script type="text/javascript" src="script_jq.js"></script>
 		<script type="text/javascript" src="ajax.js"></script>
 		<link rel="stylesheet" href="bootstrap_bet.css"/>       <!-- causing problems in form's positioning--> 
-		<script>
-			function updateDB(){
-				// console.log("qerw");
-				// var hr = new XMLHttpRequest();
-				var url = "feedtodo.php";
-				var c_todo = $('#i_todo').val();
-				var c_by = $('#i_by').val();
-				var c_username= "<?php echo $s_username ?>";
-				// console.log(s_username);
-				$.ajax({
-						  type: "POST",
-						  url: url,
-						  data: { t_todo: c_todo , t_by: c_by ,t_user : c_username }
-						}).done(function( msg ) {
-						  $('#forlater').append("<div class='ret'>"+msg+"</div>");
-						});
-				$('#i_todo').val("");
-				$('#i_by').val("");
-				// var transfer = "t_todo="+todo+"&t_by="+by;
-				// hr.open("POST",url,true);
-				// // hr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-				// hr.onreadystatechange=function(){
-				// 	if (hr.readyState==4 && hr.status ==200){
-				// 		var ret = hr.responseText;
-				// 		$('#forlater').append("<div class='ret'>"+ret+"</div>");
-				// 	}
-				// }
-				// hr.send(transfer);
+		
 
-			}
-			
-		</script>
 		<script type="text/javascript">
 			function disp()
 			{
@@ -138,25 +108,17 @@
 		
 		<!-- <p><a href="logout.php"> Logout</a></p>
 		<p> <a href="alreadydone.php">TASKS ALREADY DONE!</a></p> -->
-		<p> Your todo's :</p>
-		<!-- <table>
-			<tr>
-				<th>
-					CBox
-				</th>
-				<th>
-					TODO
-				</th>
-				<th>
-					By
-				</th>
-			</tr> -->
+		
 
 		<?php
 		// echo $s_username;
 		$todo=mysql_query("SELECT * FROM $s_username ");
-		// $number=mysql_num_rows($todo);
+		$number=mysql_num_rows($todo);
 		// echo $number;
+		// if ($number==0){echo "<p id='gotnothing'> you got nothing to do!</p>";}
+		// else{
+		
+			echo "<h1 id='marginreduce' class='hidden-start'> Your todo's :</h1><br><br><br><table class='table table-hover todo-table' style='width: 1000;margin-left:175px;'><tr><th>CBox</th><th>TODO</th><th>By</th></tr>";
 		while($row = mysql_fetch_array($todo))
 		  	{
 		  		if($row['condn']=="nd")
@@ -165,27 +127,30 @@
 				  		$cb="$del"."cb";
 				  		$div="$del"."del";
 				  		$task="$del"."task";
+				  		$task1="$task"."1";
+				  		$task2="$task"."2";
 				  		//echo $div;
-				  		echo "<input type='checkbox' style='margin-left:100px;' class='cb' id = '$cb'> ";
-				  		echo "<p id='$task' style='display:inline;' class='lead'><a onClick='showby()'><span id='undrlne' style='font-size:40'>". $row['todo'] . "</span></a> <span id='hidden2'>&nbsp&nbsp  <span style='font-size:30px;'>by</span> &nbsp&nbsp  <span style='font-size:40'>\"". $row['doneby']. "\"</span></span>"."</p>";
-						echo "<div class='hidden' id='$div' style='display:inline-block'><form method='POST' action='deletetodo.php'><input name='delete' value='$del' ' type='hidden'> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type='submit' value='done'></form></div>";
-						echo "<br><br>";
+				  // 		echo "<input type='checkbox' style='margin-left:100px;' class='cb' id = '$cb'> ";
+				  // 		echo "<p id='$task' style='display:inline;' class='lead'><a onClick='showby()'><span id='undrlne' style='font-size:40'>". $row['todo'] . "</span></a> <span id='hidden2'>&nbsp&nbsp  <span style='font-size:30px;'>by</span> &nbsp&nbsp  <span style='font-size:40'>\"". $row['doneby']. "\"</span></span>"."</p>";
+						// echo "<div class='hidden' id='$div' style='display:inline-block'><form method='POST' action='deletetodo.php'><input name='delete' value='$del' ' type='hidden'> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type='submit' value='done'></form></div>";
+						// echo "<br><br>";
 
-
-						// echo "<tr>";
-						// echo "<td><input type='checkbox' class='cb' id = '$cb'></td>";
-						// echo "<td><p id='$task' class='lead'>". $row['todo'] ."</td>";
-						// echo ""
-
+						echo "<tr>";
+						echo "<td><input type='checkbox' class='cb' id = '$cb'><div class='hidden' id='$div' style='display:inline-block'><form method='POST' action='deletetodo.php'><input name='delete' value='$del' ' type='hidden'> &nbsp&nbsp <input type='submit' value='done'></form></div></td>";
+						echo "<td><p class='$task1' class='lead'>". $row['todo'] ."</td>";
+						echo "<td><p class='$task2' class='lead'>". $row['doneby'] ."</td>";
+						// echo "<div class='hidden' id='$div' style='display:inline-block'><form method='POST' action='deletetodo.php'><input name='delete' value='$del' ' type='hidden'> &nbsp&nbsp <input type='submit' value='done'></form></div>";
+						// echo "<br><br>";
+						echo "</tr>";	
 					}
 			}
+		// }
 
 		 // mysql_close($link);
 
 		?>
 
-	<div id="forlater"></div>
-	<!-- </table> -->
+	</table>
 	<!--	<div > 
 			<table class="table table-hover">
 				<tr>
@@ -200,4 +165,42 @@
 		</div> -->
 	</body>
 	<script type="text/javascript" src="script_todomain.js"></script>
+	<script>
+			function updateDB(){
+				// console.log("qerw");
+				// var hr = new XMLHttpRequest();
+				var url = "feedtodo.php";
+				var c_todo = $('#i_todo').val();
+				var c_by = $('#i_by').val();
+				var c_username= "<?php echo $s_username ?>";
+				// console.log(s_username);
+				$.ajax({
+						  type: "POST",
+						  url: url,
+						  data: { t_todo: c_todo , t_by: c_by ,t_user : c_username }
+						}).done(function( msg ) {
+						  $('.todo-table').append(msg);
+						});
+				$('#i_todo').val("");
+				$('#i_by').val("");
+				callafter();
+				$('#marginreduce').removeClass('hidden-start');
+				$('.table').removeClass('hidden-start');
+				$('#gotnothing').addClass('hidden-start');
+
+				// var transfer = "t_todo="+todo+"&t_by="+by;
+				// hr.open("POST",url,true);
+				// // hr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				// hr.onreadystatechange=function(){
+				// 	if (hr.readyState==4 && hr.status ==200){
+				// 		var ret = hr.responseText;
+				// 		$('#forlater').append("<div class='ret'>"+ret+"</div>");
+				// 	}
+				// }
+				// hr.send(transfer);
+
+			}
+
+			
+		</script>
 </html>
